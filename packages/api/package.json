@@ -2,6 +2,9 @@
   "name": "@resumePDF/api",
   "module": "server.ts",
   "type": "module",
+  "scripts": {
+    "server": "bun server.ts --watch"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -9,7 +12,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "express": "^4.19.2",
     "langchain": "^0.1.33"
   }
 }
