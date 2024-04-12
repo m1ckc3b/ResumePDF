@@ -1,23 +1,26 @@
+import express from "express"
+import cors from "cors"
+import multer from "multer"
 
-const server = Bun.serve({
-  port: process.env.PORT,
-  async fetch(req) {
-    const path = new URL(req.url).pathname
+const app = express()
+// app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
-    if (req.method === "POST" && path === "/api") {
-      const data = await req.json()
+const upload = multer({ dest: "uploads/"})
 
-      return Response.json({
-        
-      })
-    }
-
-    if (req.method === "GET" && path === "/api") {
-      return new Response("Hello from resumePDF")
-    }
-
-    return new Response("Page not found", { status: 404 })
-  }
+app.get('/api', async (req:Request, res: Response) => {
+  res.send("Hello from ResumePDF ")
 })
 
-console.log(`Server is listenning on ${server.url}`)
+app.post("/api", upload.single("file"), (req: Request, res: Response) => {
+
+  const question = req.body.question
+  const file = req.file
+
+  res.send("Data received")
+  
+})
+
+app.listen(process.env.PORT, () => console.log("Server is listenning..."))
+
