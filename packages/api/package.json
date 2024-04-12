@@ -1,5 +1,5 @@
 {
-  "name": "@resumePDF/api",
+  "name": "api",
   "module": "server.ts",
   "type": "module",
   "scripts": {

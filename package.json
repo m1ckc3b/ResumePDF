@@ -2,8 +2,13 @@
   "name": "resumepdf",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "concurrently \"cd packages/api && bun run server\" \"cd packages/front && bun run start\" ",
+    "clean": "rm -rf node_modules packages/api/node_modules packages/front/node_modules bun.lockb packages/api/bun.lockb packages/front/bun"
+  },
   "workspaces":[
-    "packages/*"
+    "packages/api",
+    "packages/front"
   ],
   "devDependencies": {
     "@types/bun": "latest"
