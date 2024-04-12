@@ -22,5 +22,4 @@ app.post("/api", upload.single("file"), (req: Request, res: Response) => {
   
 })
 
-app.listen(process.env.PORT, () => console.log("Server is listenning..."))
-
+app.listen(process.env.PORT, () => console.log(`Server is running at http://localhost:${process.env.PORT}`))
