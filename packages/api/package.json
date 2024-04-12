@@ -6,7 +6,8 @@
     "server": "bun server.ts --watch"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/multer": "^1.4.11",
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
