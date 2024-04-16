@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import { upload } from "./middlewares/multer-config"
 import main from "./llm";
+import { file } from "bun";
+import type { uploadFilde } from "./types/uploadfile";
 
 const app = express()
 // app.use(express.json())
@@ -13,8 +15,10 @@ app.get('/api', async (req: Request, res: Response)=> {
   res.send("Hello from ResumePDF ")
 })
 
-app.post("/api", upload, async (req: Request, res: Response) => {
-  const {question: string, file: File} = req.body
+app.post("/api", upload.single('file'), async (req: Request, res: Response) => {
+  const { question } = req.body
+  const file: uploadFilde = req.file
+  
   // Call LLM main function
   const result = await main(question, file)
 
