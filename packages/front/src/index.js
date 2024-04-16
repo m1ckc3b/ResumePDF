@@ -34,15 +34,15 @@ async function submitForm(e) {
   form.reset()
 
   fileInfo.innerHTML = `
-    <h2>Informations sur le fichier</h2>
-    <p>Nom: ${file.name}</p>
-    <p>Type: ${file.type}</p>
+    <h3>Informations sur le fichier</h3>
+    <p><b>Nom</b>: ${file.name}</p>
+    <p><b>Type</b>: ${file.type}</p>
   `
   resume.innerHTML = `
-    <h2>Résumé</h2>
+    <h3>Résumé</h3>
     <p>${await response.text()}</p>
   `
   reqExecution.innerHTML = `
-    <p>Réponse en : ${end - start} ms</p>
+    <p><i><b>Réponse en ${(end - start)/1000} secondes</b></i></p>
   `
 }
