@@ -22,11 +22,14 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { model } from "./model";
 import { StringOutputParser } from "langchain/schema/output_parser";
 import { RunnablePassthrough, RunnableSequence } from "langchain/runnables";
+import type { uploadFilde } from "../types/uploadfile";
 
-export default async function main(question: string, file: File): Promise<String> {
+export default async function main(question: string, file: uploadFilde): Promise<String> {
   // Loading data -> DocumentLoaders
-  const loader = new PDFLoader(file)
+  const loader = new PDFLoader(file.path)
   const docs = await loader.load()
+  console.log("after Loading data")
+  
 
   // Splitting data -> TextSplitters
   const textSplitters = new RecursiveCharacterTextSplitter({
@@ -34,6 +37,8 @@ export default async function main(question: string, file: File): Promise<String
     chunkOverlap: 200
   })
   const splits = await textSplitters.splitDocuments(docs)
+  console.log("after splitting data");
+  
 
   // Embedding data -> Embeddings + Storing data -> VectorStore
   const vectorStore = await MemoryVectorStore.fromDocuments(
