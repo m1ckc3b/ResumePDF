@@ -22,6 +22,8 @@ app.post("/api", upload.single('file'), async (req: Request, res: Response) => {
   // Call LLM main function
   const result = await main(question, file)
 
+  console.log(result)
+  
   res.send(result)
 })
 
