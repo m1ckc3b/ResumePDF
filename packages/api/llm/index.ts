@@ -45,6 +45,8 @@ export default async function main(question: string, file: uploadFilde): Promise
     splits,
     new OpenAIEmbeddings()
   )
+  console.log("after vector store");
+  
 
   // Retrieving data from vector store -> Retriver
     const retriever = vectorStore.asRetriever()
