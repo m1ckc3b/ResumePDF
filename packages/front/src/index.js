@@ -7,12 +7,12 @@ form.addEventListener("submit", submitForm)
 async function submitForm(e) {
   e.preventDefault()
 
-  const question = e.target.question.value
+  // const question = e.target.question.value
   const file = e.target.file.files[0]
   console.log(file)
 
   const formData = new FormData()
-  formData.append("question", question)
+  // formData.append("question", question)
   formData.append("file", file)
 
   const response = await fetch("http://localhost:3000/api", {
