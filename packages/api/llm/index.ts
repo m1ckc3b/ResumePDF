@@ -24,7 +24,7 @@ import { StringOutputParser } from "langchain/schema/output_parser";
 import { RunnablePassthrough, RunnableSequence } from "langchain/runnables";
 import type { uploadFilde } from "../types/uploadfile";
 
-export default async function main(question: string, file: uploadFilde): Promise<String> {
+export default async function main(file: uploadFilde): Promise<String> {
   // Loading data -> DocumentLoaders
   const loader = new PDFLoader(file.path)
   const docs = await loader.load()
@@ -62,7 +62,7 @@ export default async function main(question: string, file: uploadFilde): Promise
     new StringOutputParser()
   ])
 
-  const response = await chain.invoke(question)
+  const response = await chain.invoke("De quoi parle ce document ?")
   return response
 
 }
